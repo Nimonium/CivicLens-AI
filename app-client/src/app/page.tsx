@@ -33,7 +33,7 @@ export default function Home() {
             <img 
               className="w-full h-full object-cover" 
               alt="Community Map" 
-              src="https://images.unsplash.com/photo-1517409543781-a67b2d5f81e3?auto=format&fit=crop&q=80&w=800" 
+              src="https://picsum.photos/seed/hero/800/600" 
             />
             {/* Overlay floating status card */}
             <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-md p-4 rounded-xl border border-gray-200 shadow-lg flex items-center gap-4">
