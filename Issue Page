@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Community Hero | Report Issue</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#434655",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "error": "#ba1a1a",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#2a1700",
+                        "surface-bright": "#f9f9ff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-tint": "#0053db",
+                        "primary-fixed": "#dbe1ff",
+                        "inverse-surface": "#293040",
+                        "outline-variant": "#c3c6d7",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-background": "#141b2b",
+                        "background": "#f9f9ff",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "secondary": "#006c49",
+                        "outline": "#737686",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#005236",
+                        "on-surface": "#141b2b",
+                        "surface-container": "#e9edff",
+                        "inverse-on-surface": "#edf0ff",
+                        "tertiary-fixed": "#ffddb8",
+                        "secondary-fixed-dim": "#4edea3",
+                        "primary-container": "#2563eb",
+                        "surface-container-high": "#e1e8fd",
+                        "inverse-primary": "#b4c5ff",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "tertiary-container": "#996100",
+                        "primary": "#004ac6",
+                        "on-tertiary-container": "#ffeedd",
+                        "on-secondary-container": "#00714d",
+                        "surface-container-highest": "#dce2f7",
+                        "surface-dim": "#d3daef",
+                        "surface": "#f9f9ff",
+                        "secondary-container": "#6cf8bb",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-low": "#f1f3ff",
+                        "on-primary-container": "#eeefff",
+                        "on-secondary-fixed": "#002113",
+                        "surface-variant": "#dce2f7",
+                        "tertiary": "#784b00",
+                        "secondary-fixed": "#6ffbbe",
+                        "on-primary-fixed": "#00174b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "lg": "24px",
+                        "gutter": "16px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "base": "8px",
+                        "container-margin": "16px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Public Sans"],
+                        "headline-md": ["Public Sans"],
+                        "label-md": ["Public Sans"],
+                        "body-md": ["Public Sans"],
+                        "headline-lg": ["Public Sans"],
+                        "headline-lg-mobile": ["Public Sans"],
+                        "headline-sm": ["Public Sans"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "300" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Public Sans', sans-serif;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .form-input-focus:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body class="bg-surface text-on-surface min-h-screen flex flex-col">
+    <!-- TopAppBar (Shared Component Logic) -->
+    <header class="bg-surface dark:bg-on-background shadow-sm fixed top-0 w-full z-40">
+        <div class="hidden md:flex justify-between items-center px-lg w-full max-w-7xl mx-auto h-16">
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary dark:text-primary-fixed"
+                    style="font-size: 28px;">volunteer_activism</span>
+                <span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">Community
+                    Hero</span>
+            </div>
+            <nav class="flex items-center gap-lg">
+                <a class="text-on-surface-variant dark:text-outline-variant font-label-md text-label-md hover:bg-surface-container-high dark:hover:bg-on-surface-variant transition-colors px-3 py-1 rounded-full"
+                    href="#">Home</a>
+                <a class="text-on-surface-variant dark:text-outline-variant font-label-md text-label-md hover:bg-surface-container-high dark:hover:bg-on-surface-variant transition-colors px-3 py-1 rounded-full"
+                    href="#">Map</a>
+                <a class="text-primary dark:text-primary-fixed border-b-2 border-primary font-label-md text-label-md px-3 py-1"
+                    href="#">Report</a>
+                <a class="text-on-surface-variant dark:text-outline-variant font-label-md text-label-md hover:bg-surface-container-high dark:hover:bg-on-surface-variant transition-colors px-3 py-1 rounded-full"
+                    href="#">Feed</a>
+                <a class="text-on-surface-variant dark:text-outline-variant font-label-md text-label-md hover:bg-surface-container-high dark:hover:bg-on-surface-variant transition-colors px-3 py-1 rounded-full"
+                    href="#">Profile</a>
+            </nav>
+            <div class="flex items-center">
+                <button class="material-symbols-outlined p-2 text-on-surface-variant">search</button>
+            </div>
+        </div>
+        <!-- Mobile Header (Contextual) -->
+        <div class="flex md:hidden items-center justify-between px-md h-14 bg-surface">
+            <span class="material-symbols-outlined text-primary">arrow_back</span>
+            <h1 class="font-headline-sm-mobile text-headline-sm font-bold text-on-surface">Report an Issue</h1>
+            <div class="w-6"></div>
+        </div>
+    </header>
+    <!-- Main Content Canvas -->
+    <main class="flex-grow pt-16 md:pt-24 pb-24 px-gutter max-w-2xl mx-auto w-full">
+        <header class="hidden md:block mb-xl">
+            <h1 class="font-headline-lg text-headline-lg text-on-surface">Report an Issue</h1>
+            <p class="font-body-md text-body-md text-on-surface-variant mt-sm">Help improve your community by detailing
+                the problem below.</p>
+        </header>
+        <section class="space-y-lg">
+            <!-- Image Upload Area -->
+            <div class="relative group">
+                <div class="border-2 border-dashed border-outline-variant rounded-xl p-xl flex flex-col items-center justify-center bg-white hover:bg-surface-container-low transition-all cursor-pointer min-h-[200px]"
+                    id="dropzone">
+                    <span class="material-symbols-outlined text-primary text-5xl mb-md">camera</span>
+                    <p class="font-headline-sm text-headline-sm text-on-surface text-center">Drag &amp; drop or Click to
+                        upload</p>
+                    <p class="font-body-md text-body-md text-on-surface-variant text-center mt-xs">Upload a clear photo
+                        of the issue (JPG, PNG)</p>
+                    <input accept="image/*" class="hidden" id="file-input" type="file" />
+                </div>
+                <!-- Placeholder Image Preview (Contextual) -->
+                <div class="hidden absolute inset-0 rounded-xl overflow-hidden shadow-md">
+                    <img class="w-full h-full object-cover"
+                        data-alt="A high-quality, professional wide-angle shot of a city street with a noticeable pothole in the foreground. The lighting is natural and bright, conveying a clear daytime suburban setting with clean pavement and green trees in the background. The aesthetic is clean and corporate, matching a modern civic reporting app."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBi_mBPArmhjyR4PLnIQeg_c1_IaNG_SSafUcdZN5vNEs2CSUPR8IK6nyIkbFq7sH2XaIZg5ac4H1X_dAUALFDXBMBSOej8on1x9ewin4Vw_ZKTOyR7xOjTVRqAPJGg6Zo0ohYiKC0aI13kPHzEPfHDVDgekWYfVOtut-klROUJztBiJva_vkb6rZ9ms7Tk6fFOkJ5hfosL57aBwJryHWtZCbnaVBR4i_uEaIMgR0wVD1zBYPShsoN_TSXsCqWxNopJnCIakbDzzbk" />
+                </div>
+            </div>
+            <!-- Form Content -->
+            <div class="space-y-md">
+                <!-- Title -->
+                <div class="flex flex-col gap-xs">
+                    <label class="font-label-md text-label-md text-on-surface-variant ml-xs" for="title">Issue
+                        Title</label>
+                    <input
+                        class="w-full px-md py-md rounded-lg border border-outline bg-white font-body-md text-body-md form-input-focus transition-all"
+                        id="title" placeholder="Brief summary of the problem" type="text" />
+                </div>
+                <!-- Category Dropdown -->
+                <div class="flex flex-col gap-xs">
+                    <label class="font-label-md text-label-md text-on-surface-variant ml-xs"
+                        for="category">Category</label>
+                    <select
+                        class="w-full px-md py-md rounded-lg border border-outline bg-white font-body-md text-body-md form-input-focus transition-all appearance-none cursor-pointer"
+                        id="category">
+                        <option disabled="" selected="" value="">Select an issue type</option>
+                        <option value="potholes">Potholes</option>
+                        <option value="street-lights">Street Lights</option>
+                        <option value="water-leakage">Water Leakage</option>
+                        <option value="waste-management">Waste Management</option>
+                        <option value="road-damage">Road Damage</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <!-- Description -->
+                <div class="flex flex-col gap-xs">
+                    <label class="font-label-md text-label-md text-on-surface-variant ml-xs"
+                        for="description">Description</label>
+                    <textarea
+                        class="w-full px-md py-md rounded-lg border border-outline bg-white font-body-md text-body-md form-input-focus transition-all resize-none"
+                        id="description" placeholder="Provide more details to help our team understand the situation..."
+                        rows="4"></textarea>
+                </div>
+                <!-- Location -->
+                <div
+                    class="bg-surface-container-low rounded-xl p-md border border-outline-variant flex items-start gap-md">
+                    <div class="bg-primary-container p-2 rounded-full">
+                        <span class="material-symbols-outlined text-on-primary-container"
+                            style="font-variation-settings: 'FILL' 1;">location_on</span>
+                    </div>
+                    <div class="flex-grow">
+                        <p class="font-label-md text-label-md text-on-surface-variant">Current Location</p>
+                        <p class="font-headline-sm text-headline-sm text-on-surface">123 Maple St</p>
+                        <div class="mt-sm rounded-lg overflow-hidden h-32 w-full relative">
+                            <img class="w-full h-full object-cover grayscale-[20%] opacity-80"
+                                data-alt="A clean, minimalist vector-style map view showing a suburban intersection with a pinpoint marker. The colors are muted blues and grays, adhering to a professional corporate UI design system. Subtle grid lines and light street names provide a clear navigational context for a city reporting service."
+                                data-location="Chicago"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuC43NHTo7dF_zpiY1iby4Tsgmia6_tNo3xprL6fb7RwW1Wzpg6FdctTKGyzRg98NlZgfZpQjYTSuaBYS_rsfJ9QsB7SkqQs3sKW6FPfENJ5FQ4Z28LFiKmYLAq9RqAL8hjg-Qe8ewXSTGxPQ0ZIy2hflf6mbNrmcdqS5SNyU7zF90mgttB4kr-MiJjRsSdnN6PZK2P8rkRycUecpfO1DifAz5b_3X0fbGC_Z0PVxy6PGvGIH5RhSI0cmuolboVqXY33sSKKVAIvh7c" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Submit Button -->
+            <button
+                class="w-full bg-primary hover:bg-primary-container text-on-primary font-headline-sm py-md rounded-lg shadow-lg active:scale-95 transition-all duration-150 flex justify-center items-center gap-sm">
+                <span>Submit Report</span>
+                <span class="material-symbols-outlined">send</span>
+            </button>
+        </section>
+    </main>
+    <!-- BottomNavBar (Shared Component Logic) -->
+    <nav
+        class="fixed md:hidden bottom-0 w-full z-50 flex justify-around items-center px-gutter py-sm pb-safe bg-surface-container dark:bg-inverse-surface border-t border-outline-variant dark:border-outline shadow-lg rounded-t-xl">
+        <a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant group"
+            href="#">
+            <span class="material-symbols-outlined group-active:scale-90 duration-150">home</span>
+            <span class="font-label-md text-label-md">Home</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant group"
+            href="#">
+            <span class="material-symbols-outlined group-active:scale-90 duration-150">map</span>
+            <span class="font-label-md text-label-md">Map</span>
+        </a>
+        <!-- Active Item: Report -->
+        <a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-full px-4 py-1 scale-90 duration-150"
+            href="#">
+            <span class="material-symbols-outlined">add_circle</span>
+            <span class="font-label-md text-label-md">Report</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant group"
+            href="#">
+            <span class="material-symbols-outlined group-active:scale-90 duration-150">forum</span>
+            <span class="font-label-md text-label-md">Feed</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant group"
+            href="#">
+            <span class="material-symbols-outlined group-active:scale-90 duration-150">person</span>
+            <span class="font-label-md text-label-md">Profile</span>
+        </a>
+    </nav>
+    <script>
+        // Micro-interactions
+        const dropzone = document.getElementById('dropzone');
+        const fileInput = document.getElementById('file-input');
+
+        dropzone.addEventListener('click', () => fileInput.click());
+
+        dropzone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropzone.classList.add('bg-primary-container/10', 'border-primary');
+        });
+
+        dropzone.addEventListener('dragleave', () => {
+            dropzone.classList.remove('bg-primary-container/10', 'border-primary');
+        });
+
+        dropzone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropzone.classList.remove('bg-primary-container/10', 'border-primary');
+            // Mock file upload handling
+            if (e.dataTransfer.files.length > 0) {
+                alert('File received: ' + e.dataTransfer.files[0].name);
+            }
+        });
+
+        fileInput.addEventListener('change', () => {
+            if (fileInput.files.length > 0) {
+                alert('File selected: ' + fileInput.files[0].name);
+            }
+        });
+
+        // Submit Interaction
+        const submitBtn = document.querySelector('button.bg-primary');
+        submitBtn.addEventListener('click', () => {
+            submitBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Sending...';
+            setTimeout(() => {
+                submitBtn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Submitted!';
+                submitBtn.classList.replace('bg-primary', 'bg-secondary');
+            }, 1500);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Issue Detail - Community Hero</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Material Symbols -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Glassmorphism utility */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#434655",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "error": "#ba1a1a",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#2a1700",
+                        "surface-bright": "#f9f9ff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-tint": "#0053db",
+                        "primary-fixed": "#dbe1ff",
+                        "inverse-surface": "#293040",
+                        "outline-variant": "#c3c6d7",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-background": "#141b2b",
+                        "background": "#f9f9ff",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "secondary": "#006c49",
+                        "outline": "#737686",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#005236",
+                        "on-surface": "#141b2b",
+                        "surface-container": "#e9edff",
+                        "inverse-on-surface": "#edf0ff",
+                        "tertiary-fixed": "#ffddb8",
+                        "secondary-fixed-dim": "#4edea3",
+                        "primary-container": "#2563eb",
+                        "surface-container-high": "#e1e8fd",
+                        "inverse-primary": "#b4c5ff",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "tertiary-container": "#996100",
+                        "primary": "#004ac6",
+                        "on-tertiary-container": "#ffeedd",
+                        "on-secondary-container": "#00714d",
+                        "surface-container-highest": "#dce2f7",
+                        "surface-dim": "#d3daef",
+                        "surface": "#f9f9ff",
+                        "secondary-container": "#6cf8bb",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-low": "#f1f3ff",
+                        "on-primary-container": "#eeefff",
+                        "on-secondary-fixed": "#002113",
+                        "surface-variant": "#dce2f7",
+                        "tertiary": "#784b00",
+                        "secondary-fixed": "#6ffbbe",
+                        "on-primary-fixed": "#00174b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "lg": "24px",
+                        "gutter": "16px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "base": "8px",
+                        "container-margin": "16px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Public Sans"],
+                        "headline-md": ["Public Sans"],
+                        "label-md": ["Public Sans"],
+                        "body-md": ["Public Sans"],
+                        "headline-lg": ["Public Sans"],
+                        "headline-lg-mobile": ["Public Sans"],
+                        "headline-sm": ["Public Sans"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "300" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body class="bg-background text-on-background font-body-lg min-h-screen pb-24 md:pb-0">
+    <!-- Top Navigation Bar (Shared Component) -->
+    <header class="bg-surface shadow-sm sticky top-0 z-50 h-16 flex items-center px-lg w-full">
+        <div class="max-w-7xl mx-auto w-full flex justify-between items-center">
+            <div class="flex items-center gap-sm">
+                <span class="material-symbols-outlined text-primary text-[28px]">volunteer_activism</span>
+                <h1 class="font-headline-md text-headline-md font-bold text-primary">Community Hero</h1>
+            </div>
+            <nav class="hidden md:flex gap-lg items-center">
+                <a class="font-label-md text-label-md text-primary border-b-2 border-primary py-1" href="#">Home</a>
+                <a class="font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high transition-colors px-2 py-1 rounded"
+                    href="#">Map</a>
+                <a class="font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high transition-colors px-2 py-1 rounded"
+                    href="#">Feed</a>
+                <a class="font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high transition-colors px-2 py-1 rounded"
+                    href="#">Profile</a>
+                <button
+                    class="material-symbols-outlined text-on-surface-variant p-2 rounded-full hover:bg-surface-container-high">search</button>
+            </nav>
+            <div class="md:hidden">
+                <button class="material-symbols-outlined text-primary p-2">search</button>
+            </div>
+        </div>
+    </header>
+    <main class="max-w-7xl mx-auto md:px-lg md:py-xl grid grid-cols-1 lg:grid-cols-12 gap-lg">
+        <!-- Left Column: Details & Evidence -->
+        <div class="lg:col-span-8 flex flex-col gap-lg">
+            <!-- Hero Image Carousel -->
+            <section class="relative overflow-hidden md:rounded-xl shadow-md group">
+                <div class="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar">
+                    <div class="flex-none w-full h-[300px] md:h-[450px] snap-center">
+                        <img class="w-full h-full object-cover"
+                            data-alt="A cinematic, high-resolution photograph of a damaged city street light on 4th Avenue during twilight. The surrounding urban environment is rendered in a clean, modern aesthetic with a palette of deep blues, soft grays, and professional navy tones. The street light is dark, contrasting against the fading sky, emphasizing a sense of civic need and professional attention. Lighting is soft and atmospheric."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCA9ZL6yJHey3zSCMTyni_KmSMWZgCdjgoLjd7IQSP8sSYHUCn6APycV6Dzs2c4POhCW5-2VjAr5gWzHG_91FctkbS5MvWXFBMNHRAiXVYgyPdyYTk7KEto42g6WrXR2d8o-OTVTNr8tBHOp5gMCTt0p2X6XwjwOupiox5dilFzXXerbKu4EKIVU-FUonzQp5v9q3Q_4Qw6FF-74ZD5iQ_bSvQdzC0FuGafo5aIlF0yXyJNgEHM4hpDJ0kYdIw4M1eXv2QSS8Ugw5U" />
+                    </div>
+                    <div class="flex-none w-full h-[300px] md:h-[450px] snap-center">
+                        <img class="w-full h-full object-cover"
+                            data-alt="A detailed, close-up shot of an electrical panel at the base of a street light, showing signs of weathering and a broken latch. The lighting is bright and clear, reflecting a civic maintenance perspective. The background shows a modern sidewalk with professional architectural textures. Colors include industrial grays and metallic surfaces under a bright, high-key daylight."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBk3iE4RqvR7_GNFDhpNjqcdW9zAOWHNYHQsJa0svCrxQB2rsq4hPcxIB5XIGGZuQ52btM-_kEG9ZhDZu5W4iKT7CfMPFniSnpRmmaCxLnUOkGTjrPdj4cT6LU9VTMGtNzLgLms-PayMkrNwYdvUsMqPDMJTNmcayL0eUy6PsCpBVjNE59Z8AmzWroIcE8JFYi2jBIk-OhDCAR6MVYptvlpMidkdAq0bhY0TsN0rm0cX_hy6ertlinhtgPW2VsdHZQgqGsxifYENw" />
+                    </div>
+                </div>
+                <!-- Navigation Dots (Mock) -->
+                <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                    <div class="w-2 h-2 rounded-full bg-white shadow-lg"></div>
+                    <div class="w-2 h-2 rounded-full bg-white/50"></div>
+                </div>
+                <!-- Overlay Back Button -->
+                <button
+                    class="absolute top-4 left-4 bg-black/20 backdrop-blur-md text-white p-2 rounded-full hover:bg-black/40 transition-colors md:hidden">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                </button>
+            </section>
+            <!-- Issue Summary Card -->
+            <section class="px-gutter md:px-0">
+                <div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm">
+                    <div class="flex flex-wrap gap-sm mb-md">
+                        <span
+                            class="px-3 py-1 rounded-full bg-surface-container-high text-on-surface-variant text-label-md font-label-md uppercase tracking-wider">Street
+                            Lights</span>
+                        <span
+                            class="px-3 py-1 rounded-full bg-primary-container text-on-primary-container text-label-md font-label-md font-bold uppercase tracking-wider flex items-center gap-1">
+                            <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
+                            In Progress
+                        </span>
+                    </div>
+                    <h2
+                        class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-background mb-sm">
+                        Broken street light on 4th Ave</h2>
+                    <div class="flex items-center gap-sm mb-lg">
+                        <div
+                            class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center text-primary font-bold text-xs">
+                            JD</div>
+                        <span class="text-body-md font-body-md text-on-surface-variant">John D. • 3 days ago</span>
+                    </div>
+                    <p class="text-body-lg font-body-lg text-on-surface mb-xl leading-relaxed">
+                        The light has been flickering for a week and finally went out yesterday. It's very dark at
+                        night, creating a safety concern for pedestrians returning from the nearby transit station.
+                    </p>
+                    <!-- Progress Section -->
+                    <div class="space-y-sm">
+                        <div class="flex justify-between items-end">
+                            <span class="text-label-md font-label-md text-on-surface-variant font-semibold">RESOLUTION
+                                PROGRESS</span>
+                            <span class="text-headline-sm font-headline-sm text-primary">60%</span>
+                        </div>
+                        <div class="w-full bg-surface-container-high h-3 rounded-full overflow-hidden">
+                            <div class="bg-primary h-full rounded-full transition-all duration-1000 ease-out"
+                                style="width: 60%"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Verification & Action -->
+            <section class="px-gutter md:px-0">
+                <button
+                    class="w-full py-4 bg-primary text-on-primary font-bold rounded-xl shadow-lg hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-md">
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified</span>
+                    Verify this issue
+                </button>
+                <p class="text-center text-label-md font-label-md text-on-surface-variant mt-sm">24 neighbors have
+                    verified this today</p>
+            </section>
+            <!-- Timeline / Activity -->
+            <section class="px-gutter md:px-0 mb-xl">
+                <h3 class="font-headline-sm text-headline-sm mb-lg flex items-center gap-sm">
+                    <span class="material-symbols-outlined text-primary">history</span>
+                    Activity Timeline
+                </h3>
+                <div
+                    class="space-y-0 relative before:absolute before:left-4 before:top-4 before:bottom-4 before:w-0.5 before:bg-outline-variant">
+                    <!-- Timeline Item -->
+                    <div class="relative pl-12 pb-lg">
+                        <div
+                            class="absolute left-1.5 top-1.5 w-5 h-5 rounded-full bg-primary-container border-4 border-surface ring-2 ring-primary">
+                        </div>
+                        <div class="bg-surface-container-low p-md rounded-lg">
+                            <p class="text-body-md font-bold text-on-surface">Assigned to Maintenance</p>
+                            <p class="text-body-md text-on-surface-variant mb-sm">The Public Works department has
+                                dispatched a technician.</p>
+                            <span class="text-label-md text-outline">Today, 10:30 AM</span>
+                        </div>
+                    </div>
+                    <!-- Timeline Item -->
+                    <div class="relative pl-12 pb-lg">
+                        <div
+                            class="absolute left-2 top-2 w-4 h-4 rounded-full bg-outline-variant border-2 border-surface">
+                        </div>
+                        <div class="bg-surface-container-low p-md rounded-lg">
+                            <p class="text-body-md font-bold text-on-surface">Issue Verified</p>
+                            <p class="text-body-md text-on-surface-variant">Verified by City Admin after 15 community
+                                reports.</p>
+                            <span class="text-label-md text-outline">Yesterday, 4:15 PM</span>
+                        </div>
+                    </div>
+                    <!-- Comment Item -->
+                    <div class="relative pl-12">
+                        <div
+                            class="absolute left-2 top-2 w-4 h-4 rounded-full bg-outline-variant border-2 border-surface">
+                        </div>
+                        <div class="bg-surface-container-low p-md rounded-lg border border-outline-variant">
+                            <div class="flex items-center gap-sm mb-xs">
+                                <span class="font-bold text-body-md">Sarah Jenkins</span>
+                                <span class="text-label-md text-outline">• 2 days ago</span>
+                            </div>
+                            <p class="text-body-md text-on-surface">I almost tripped here last night. Glad this is being
+                                looked at!</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- Right Column: Location & Context -->
+        <aside class="lg:col-span-4 flex flex-col gap-lg px-gutter md:px-0">
+            <!-- Map Card -->
+            <div
+                class="bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden shadow-sm sticky top-24">
+                <div class="p-md bg-surface-container flex justify-between items-center">
+                    <span
+                        class="font-bold text-label-md uppercase tracking-widest text-on-surface-variant">Location</span>
+                    <button class="text-primary font-bold text-label-md flex items-center gap-1">
+                        <span class="material-symbols-outlined text-[18px]">directions</span>
+                        Get Directions
+                    </button>
+                </div>
+                <div class="h-64 bg-surface-variant relative">
+                    <!-- Map Placeholder -->
+                    <div class="absolute inset-0 grayscale-[0.5] opacity-80"
+                        data-alt="A clean, top-down minimalist vector-style map of a city intersection on 4th Avenue. The map uses a soft palette of light grays and blues to match a professional civic UI. A bright blue circular pin icon with a white 'lightbulb' icon inside marks the specific location of the reported issue. The aesthetic is modern, high-contrast, and focused on clarity."
+                        data-location="Seattle, 4th Avenue"
+                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB60F_zJTHgEOAVDZ6YL3byYqF_AyR6UuxcyKWRQIh5xnFq92tOE0Dd9etfs-gatYEN_6Cbld7vySfjqTATj4WZZAiDCnH4MPK3aFLCWLb62RybZ9dVXsn1YzWtMGcaN1xpvqhJ0C8FirlADmMDeEStUM2UW46GogfwYH1hXjQ6mIwHNv6u3NFeklxdjEhkGpgmZ8QnlUEJa680y9cW95X4Vek-QmMzOlCv3GCIKnYryKbp7disRaCunn4aQwc5qpp0FKcJ9TsxBtQ')">
+                    </div>
+                    <!-- Map Pin Animation/Overlay -->
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+                        <div class="relative">
+                            <div class="absolute inset-0 bg-primary/30 rounded-full animate-ping scale-150"></div>
+                            <div class="relative bg-primary text-on-primary p-2 rounded-full shadow-xl">
+                                <span class="material-symbols-outlined"
+                                    style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-md">
+                    <p class="text-body-md font-bold">1245 4th Ave, Downtown</p>
+                    <p class="text-label-md text-on-surface-variant">Near the intersection of Pike Street</p>
+                </div>
+            </div>
+            <!-- Stats/Engagement -->
+            <div class="bg-secondary-container p-lg rounded-xl text-on-secondary-container">
+                <h4 class="font-bold text-label-md uppercase mb-md">Community Impact</h4>
+                <div class="grid grid-cols-2 gap-md">
+                    <div>
+                        <p class="text-headline-sm font-headline-sm">48</p>
+                        <p class="text-label-md">Reports</p>
+                    </div>
+                    <div>
+                        <p class="text-headline-sm font-headline-sm">12</p>
+                        <p class="text-label-md">Followers</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Promotion / Suggestion -->
+            <div
+                class="border border-dashed border-outline p-lg rounded-xl flex flex-col items-center text-center gap-sm">
+                <span class="material-symbols-outlined text-outline text-4xl">notification_add</span>
+                <p class="font-bold text-body-md">Get Notified</p>
+                <p class="text-label-md text-on-surface-variant">We'll alert you as soon as this light is fixed.</p>
+                <button
+                    class="mt-sm px-6 py-2 border-2 border-primary text-primary font-bold rounded-full hover:bg-primary/5 transition-colors">Follow
+                    Issue</button>
+            </div>
+        </aside>
+    </main>
+    <!-- Bottom Navigation Bar (Shared Component for Mobile) -->
+    <nav
+        class="fixed md:hidden bottom-0 w-full z-50 bg-surface-container flex justify-around items-center px-gutter py-sm pb-safe shadow-lg rounded-t-xl border-t border-outline-variant">
+        <button class="flex flex-col items-center justify-center text-on-surface-variant">
+            <span class="material-symbols-outlined">home</span>
+            <span class="font-label-md text-label-md">Home</span>
+        </button>
+        <button class="flex flex-col items-center justify-center text-on-surface-variant">
+            <span class="material-symbols-outlined">map</span>
+            <span class="font-label-md text-label-md">Map</span>
+        </button>
+        <button
+            class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 active:scale-90 duration-150">
+            <span class="material-symbols-outlined">add_circle</span>
+            <span class="font-label-md text-label-md">Report</span>
+        </button>
+        <button class="flex flex-col items-center justify-center text-on-surface-variant">
+            <span class="material-symbols-outlined">forum</span>
+            <span class="font-label-md text-label-md">Feed</span>
+        </button>
+        <button class="flex flex-col items-center justify-center text-on-surface-variant">
+            <span class="material-symbols-outlined">person</span>
+            <span class="font-label-md text-label-md">Profile</span>
+        </button>
+    </nav>
+    <script>
+        // Simple Interaction logic
+        document.addEventListener('DOMContentLoaded', () => {
+            // Simulate progress bar animation on load
+            const progress = document.querySelector('.bg-primary.h-full');
+            if (progress) {
+                progress.style.width = '0%';
+                setTimeout(() => {
+                    progress.style.width = '60%';
+                }, 300);
+            }
+
+            // Interaction feedback for buttons
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    this.classList.add('opacity-80', 'scale-95');
+                    setTimeout(() => {
+                        this.classList.remove('opacity-80', 'scale-95');
+                    }, 150);
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Community Hero | Issue Feed</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Material Symbols -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
+    <!-- Google Font: Public Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;600;700&amp;display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .active-tab {
+            position: relative;
+        }
+
+        .active-tab::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #004ac6;
+        }
+
+        body {
+            background-color: #f9f9ff;
+            font-family: 'Public Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+    <!-- UI Designer Predicted Tailwind Config -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#434655",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "error": "#ba1a1a",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#2a1700",
+                        "surface-bright": "#f9f9ff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-tint": "#0053db",
+                        "primary-fixed": "#dbe1ff",
+                        "inverse-surface": "#293040",
+                        "outline-variant": "#c3c6d7",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-background": "#141b2b",
+                        "background": "#f9f9ff",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "secondary": "#006c49",
+                        "outline": "#737686",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#005236",
+                        "on-surface": "#141b2b",
+                        "surface-container": "#e9edff",
+                        "inverse-on-surface": "#edf0ff",
+                        "tertiary-fixed": "#ffddb8",
+                        "secondary-fixed-dim": "#4edea3",
+                        "primary-container": "#2563eb",
+                        "surface-container-high": "#e1e8fd",
+                        "inverse-primary": "#b4c5ff",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "tertiary-container": "#996100",
+                        "primary": "#004ac6",
+                        "on-tertiary-container": "#ffeedd",
+                        "on-secondary-container": "#00714d",
+                        "surface-container-highest": "#dce2f7",
+                        "surface-dim": "#d3daef",
+                        "surface": "#f9f9ff",
+                        "secondary-container": "#6cf8bb",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-low": "#f1f3ff",
+                        "on-primary-container": "#eeefff",
+                        "on-secondary-fixed": "#002113",
+                        "surface-variant": "#dce2f7",
+                        "tertiary": "#784b00",
+                        "secondary-fixed": "#6ffbbe",
+                        "on-primary-fixed": "#00174b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "lg": "24px",
+                        "gutter": "16px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "base": "8px",
+                        "container-margin": "16px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Public Sans"],
+                        "headline-md": ["Public Sans"],
+                        "label-md": ["Public Sans"],
+                        "body-md": ["Public Sans"],
+                        "headline-lg": ["Public Sans"],
+                        "headline-lg-mobile": ["Public Sans"],
+                        "headline-sm": ["Public Sans"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "300" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="bg-background text-on-surface">
+    <!-- Top AppBar (Desktop Shell) -->
+    <header class="bg-surface dark:bg-on-background shadow-sm fixed top-0 w-full z-50">
+        <div class="hidden md:flex justify-between items-center px-lg w-full max-w-7xl mx-auto h-16">
+            <div class="flex items-center gap-sm">
+                <span
+                    class="material-symbols-outlined text-primary dark:text-primary-fixed text-2xl">volunteer_activism</span>
+                <h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">Community
+                    Hero</h1>
+            </div>
+            <nav class="flex gap-lg items-center">
+                <a class="font-label-md text-label-md text-primary dark:text-primary-fixed border-b-2 border-primary py-2 px-1"
+                    href="#">Home</a>
+                <a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-on-surface-variant transition-colors rounded px-2 py-1"
+                    href="#">Map</a>
+                <a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-on-surface-variant transition-colors rounded px-2 py-1"
+                    href="#">Feed</a>
+                <a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-on-surface-variant transition-colors rounded px-2 py-1"
+                    href="#">Profile</a>
+                <button
+                    class="material-symbols-outlined text-on-surface-variant dark:text-outline-variant ml-2">search</button>
+            </nav>
+        </div>
+        <!-- Mobile Header -->
+        <div class="md:hidden flex flex-col pt-sm px-gutter pb-sm gap-sm">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-xs">
+                    <span class="material-symbols-outlined text-primary text-xl">volunteer_activism</span>
+                    <span class="font-headline-sm-mobile text-headline-sm-mobile font-bold text-primary">Community
+                        Hero</span>
+                </div>
+                <div class="flex gap-sm">
+                    <button class="material-symbols-outlined text-on-surface-variant">notifications</button>
+                    <button class="material-symbols-outlined text-on-surface-variant">person</button>
+                </div>
+            </div>
+            <!-- Search & Filter Bar -->
+            <div class="flex items-center gap-sm mt-2">
+                <div class="flex-grow relative flex items-center">
+                    <span class="material-symbols-outlined absolute left-3 text-outline">search</span>
+                    <input
+                        class="w-full pl-10 pr-4 py-2 bg-surface-container-lowest border border-outline-variant rounded-lg font-body-md text-body-md focus:outline-none focus:border-primary"
+                        placeholder="Search issues..." type="text">
+                </div>
+                <button class="p-2 bg-surface-container-high rounded-lg flex items-center justify-center">
+                    <span class="material-symbols-outlined text-on-surface-variant">tune</span>
+                </button>
+            </div>
+        </div>
+    </header>
+    <!-- Main Content -->
+    <main class="pt-[140px] md:pt-24 pb-24 max-w-2xl mx-auto px-gutter">
+        <!-- Tabs -->
+        <div
+            class="flex justify-between items-center border-b border-outline-variant mb-md overflow-x-auto no-scrollbar">
+            <button
+                class="px-md py-sm font-label-md text-label-md text-primary font-bold active-tab whitespace-nowrap">All
+                Issues</button>
+            <button class="px-md py-sm font-label-md text-label-md text-on-surface-variant whitespace-nowrap">Near
+                Me</button>
+            <button class="px-md py-sm font-label-md text-label-md text-on-surface-variant whitespace-nowrap">My
+                Reports</button>
+        </div>
+        <!-- Issue Feed -->
+        <div class="space-y-md">
+            <!-- Issue Card 1 -->
+            <div
+                class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+                <div class="relative h-48 md:h-56">
+                    <img class="w-full h-full object-cover"
+                        data-alt="A professional high-angle photo of a severe, large circular pothole in the middle of a city street with visible cracks spreading across the gray asphalt. The scene is captured in natural daylight, highlighting the depth of the hole. The urban background is slightly blurred, focusing on the infrastructure damage. The overall mood is civic-oriented and modern, emphasizing the need for repair."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAVwGRvIAHuO3Ks29fuXhj032YN6aN4yGJa10pgTXvCSEyAJxfbVAvDcSvfksUHkKHfjToh0Ei0BP4Tp84nWdmUwmw9itbCmkkLzSKmJMNVlNeJqc78emW561YhBydTx14MR_2AKVlv4nnFjSdilRHJfz1lGkRS9jno3RRaqIlZE-c87pxK1JosZ1v85CFHsEXoNPdIdAz5EK9Z5RrRZpn_P844WxpvX55Hw1PmHYnYBz0DSdYvQDZeQz1OXj2RBl9V4CULC331Y8">
+                    <div class="absolute top-3 left-3 flex gap-xs">
+                        <span
+                            class="px-3 py-1 bg-surface/90 backdrop-blur-sm text-[10px] font-bold rounded-full text-on-surface shadow-sm uppercase tracking-wider">Roads</span>
+                        <span
+                            class="px-3 py-1 bg-[#F59E0B] text-white text-[10px] font-bold rounded-full shadow-sm uppercase tracking-wider">Pending</span>
+                    </div>
+                </div>
+                <div class="p-md">
+                    <div class="flex justify-between items-start mb-xs">
+                        <h2 class="font-headline-sm text-headline-sm text-on-surface leading-tight">Huge pothole on 5th
+                            Avenue</h2>
+                        <span class="font-label-md text-label-md text-outline">2h ago</span>
+                    </div>
+                    <div class="flex items-center gap-xs text-outline mb-md">
+                        <span class="material-symbols-outlined text-sm">location_on</span>
+                        <span class="font-label-md text-label-md">Midtown, Manhattan</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-sm">
+                            <button
+                                class="flex items-center gap-xs px-3 py-1.5 bg-primary-container text-on-primary-container rounded-full hover:opacity-90 active:scale-95 transition-all">
+                                <span class="material-symbols-outlined text-[18px]">thumb_up</span>
+                                <span class="font-label-md text-label-md font-bold">42</span>
+                            </button>
+                            <button
+                                class="flex items-center gap-xs px-3 py-1.5 bg-surface-container-high text-on-surface-variant rounded-full hover:bg-surface-container-highest transition-colors">
+                                <span class="material-symbols-outlined text-[18px]">forum</span>
+                                <span class="font-label-md text-label-md">12</span>
+                            </button>
+                        </div>
+                        <button class="material-symbols-outlined text-outline">share</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Issue Card 2 -->
+            <div
+                class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+                <div class="relative h-48 md:h-56">
+                    <img class="w-full h-full object-cover"
+                        data-alt="A brightly colored city park playground with modern climbing frames and slides under a clear blue sky. A broken wooden fence post in the foreground is clearly visible, needing maintenance. The lighting is warm and late-afternoon, creating long soft shadows on the green grass. The image style is clean, corporate photography with high clarity and a sense of community responsibility."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIFo0buUnvLQkHjEqSOOY0DOAVbnKP-eOBqo7ZtDX0fPKP72ZJsxGGVWGtew4buH34Vvypx_hyzOp1Gxrnl4xi-fi5grsVANM3YdJJhnCngLhZoeq7j0-LKNSasFVhjL74jchzjXzuJYz4466Is47WfRCbPz6T7AEVY_ZdvrC8-0hqsMZ0Wblqp4qPk_wnv30JMBsfyusAXN8dTGUx2UPBcvqagQL3_HS9e65hGTvBrlCjyGNR4DgsjmqzNBRX4zBClcn1iLWsUIw">
+                    <div class="absolute top-3 left-3 flex gap-xs">
+                        <span
+                            class="px-3 py-1 bg-surface/90 backdrop-blur-sm text-[10px] font-bold rounded-full text-on-surface shadow-sm uppercase tracking-wider">Parks</span>
+                        <span
+                            class="px-3 py-1 bg-[#10B981] text-white text-[10px] font-bold rounded-full shadow-sm uppercase tracking-wider">Resolved</span>
+                    </div>
+                </div>
+                <div class="p-md">
+                    <div class="flex justify-between items-start mb-xs">
+                        <h2 class="font-headline-sm text-headline-sm text-on-surface leading-tight">Broken swing at
+                            Central Park</h2>
+                        <span class="font-label-md text-label-md text-outline">5h ago</span>
+                    </div>
+                    <div class="flex items-center gap-xs text-outline mb-md">
+                        <span class="material-symbols-outlined text-sm">location_on</span>
+                        <span class="font-label-md text-label-md">North Playground, Central Park</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-sm">
+                            <button
+                                class="flex items-center gap-xs px-3 py-1.5 bg-surface-container text-on-surface-variant rounded-full hover:opacity-90 active:scale-95 transition-all">
+                                <span class="material-symbols-outlined text-[18px]">thumb_up</span>
+                                <span class="font-label-md text-label-md font-bold">128</span>
+                            </button>
+                            <button
+                                class="flex items-center gap-xs px-3 py-1.5 bg-surface-container-high text-on-surface-variant rounded-full hover:bg-surface-container-highest transition-colors">
+                                <span class="material-symbols-outlined text-[18px]">forum</span>
+                                <span class="font-label-md text-label-md">34</span>
+                            </button>
+                        </div>
+                        <div class="flex items-center gap-xs text-[#10B981]">
+                            <span class="material-symbols-outlined text-sm"
+                                style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            <span class="font-label-md text-label-md font-bold">Fixed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Issue Card 3 -->
+            <div
+                class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+                <div class="relative h-48 md:h-56">
+                    <img class="w-full h-full object-cover"
+                        data-alt="A night shot of an urban street corner where a single metal streetlight is flickering or dark while others in the distance are lit. The sidewalk is illuminated by the neon glow of a nearby storefront in soft blues and purples. The atmosphere is cinematic yet documentary-style, highlighting a public safety concern. Modern civic aesthetic with high contrast between light and dark areas."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYm12IxAlyCf2z4DNWvevL8sExNV6v37_18bgARUtu8d7VqwMPBBXrdVKLiZiSU1kr7zQUIo0uDAqNgnHA_cASP9edmRYVMjpEdNMdH0y_k86JUFULpaBHtYyLtOLM3M4jCSUXOjbt0zfTqZiHlJnTcYtnZGxF18WROnS-2ZttNxvWhsAarwSb4-b5C36tOYiMvkNVkA453dzMTgGIxom9bxlNQYMDylt8LBOw7CxG8h1vkK8dPxJyKf_Rjwd_BCfULUMhNv7Z3SY">
+                    <div class="absolute top-3 left-3 flex gap-xs">
+                        <span
+                            class="px-3 py-1 bg-surface/90 backdrop-blur-sm text-[10px] font-bold rounded-full text-on-surface shadow-sm uppercase tracking-wider">Lighting</span>
+                        <span
+                            class="px-3 py-1 bg-primary text-white text-[10px] font-bold rounded-full shadow-sm uppercase tracking-wider">In
+                            Progress</span>
+                    </div>
+                </div>
+                <div class="p-md">
+                    <div class="flex justify-between items-start mb-xs">
+                        <h2 class="font-headline-sm text-headline-sm text-on-surface leading-tight">Flickering street
+                            light</h2>
+                        <span class="font-label-md text-label-md text-outline">1d ago</span>
+                    </div>
+                    <div class="flex items-center gap-xs text-outline mb-md">
+                        <span class="material-symbols-outlined text-sm">location_on</span>
+                        <span class="font-label-md text-label-md">Corner of 2nd &amp; Main</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-sm">
+                            <button
+                                class="flex items-center gap-xs px-3 py-1.5 bg-primary-container text-on-primary-container rounded-full hover:opacity-90 active:scale-95 transition-all">
+                                <span class="material-symbols-outlined text-[18px]">thumb_up</span>
+                                <span class="font-label-md text-label-md font-bold">18</span>
+                            </button>
+                            <button
+                                class="flex items-center gap-xs px-3 py-1.5 bg-surface-container-high text-on-surface-variant rounded-full hover:bg-surface-container-highest transition-colors">
+                                <span class="material-symbols-outlined text-[18px]">forum</span>
+                                <span class="font-label-md text-label-md">5</span>
+                            </button>
+                        </div>
+                        <button class="material-symbols-outlined text-outline">share</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- FAB -->
+    <button
+        class="fixed bottom-24 right-gutter w-[56px] h-[56px] bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center active:scale-90 duration-150 z-50">
+        <span class="material-symbols-outlined text-3xl">add</span>
+    </button>
+    <!-- Bottom Navigation Bar (Mobile) -->
+    <nav
+        class="fixed md:hidden bottom-0 w-full z-50 flex justify-around items-center px-gutter py-2 pb-safe bg-surface-container-low border-t border-outline-variant shadow-lg">
+        <div class="flex flex-col items-center justify-center text-on-surface-variant">
+            <span class="material-symbols-outlined">home</span>
+            <span class="font-label-md text-label-md">Home</span>
+        </div>
+        <div class="flex flex-col items-center justify-center text-on-surface-variant">
+            <span class="material-symbols-outlined">map</span>
+            <span class="font-label-md text-label-md">Map</span>
+        </div>
+        <div
+            class="flex flex-col items-center justify-center bg-primary text-on-primary rounded-full px-6 py-2 shadow-md active:scale-95 transition-transform">
+            <span class="material-symbols-outlined">add_circle</span>
+            <span class="font-label-md text-label-md font-bold">Report</span>
+        </div>
+        <div class="flex flex-col items-center justify-center text-primary">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">forum</span>
+            <span class="font-label-md text-label-md font-bold">Feed</span>
+        </div>
+        <div class="flex flex-col items-center justify-center text-on-surface-variant">
+            <span class="material-symbols-outlined">person</span>
+            <span class="font-label-md text-label-md">Profile</span>
+        </div>
+    </nav>
+    <script>
+        // Micro-interaction for upvote buttons
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function () {
+                if (this.querySelector('.material-symbols-outlined')?.textContent === 'thumb_up') {
+                    const countSpan = this.querySelector('span:last-child');
+                    let count = parseInt(countSpan.textContent);
+                    if (this.classList.contains('bg-primary-container')) {
+                        // Toggle effect
+                        // countSpan.textContent = count + 1; // Simulation
+                    }
+                }
+            });
+        });
+    </script>
+
+
+</body>
+
+</html>

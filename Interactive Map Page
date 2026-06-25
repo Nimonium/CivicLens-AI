@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <title>Community Hero | Interactive Map</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .bottom-sheet-transition {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .marker-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(0, 74, 198, 0.7);
+            }
+
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 10px rgba(0, 74, 198, 0);
+            }
+
+            100% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(0, 74, 198, 0);
+            }
+        }
+
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #d1d5db;
+            border-radius: 10px;
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#434655",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "error": "#ba1a1a",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#2a1700",
+                        "surface-bright": "#f9f9ff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-tint": "#0053db",
+                        "primary-fixed": "#dbe1ff",
+                        "inverse-surface": "#293040",
+                        "outline-variant": "#c3c6d7",
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-background": "#141b2b",
+                        "background": "#f9f9ff",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "secondary": "#006c49",
+                        "outline": "#737686",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-error-container": "#93000a",
+                        "on-surface": "#141b2b",
+                        "surface-container": "#e9edff",
+                        "inverse-on-surface": "#edf0ff",
+                        "tertiary-fixed": "#ffddb8",
+                        "secondary-fixed-dim": "#4edea3",
+                        "primary-container": "#2563eb",
+                        "surface-container-high": "#e1e8fd",
+                        "inverse-primary": "#b4c5ff",
+                        "on-primary": "#ffffff",
+                        "tertiary-container": "#996100",
+                        "primary": "#004ac6",
+                        "on-tertiary-container": "#ffeedd",
+                        "surface-container-highest": "#dce2f7",
+                        "surface-dim": "#d3daef",
+                        "surface": "#f9f9ff",
+                        "secondary-container": "#6cf8bb",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-low": "#f1f3ff",
+                        "on-primary-container": "#eeefff",
+                        "surface-variant": "#dce2f7",
+                        "tertiary": "#784b00",
+                        "secondary-fixed": "#6ffbbe",
+                        "on-primary-fixed": "#00174b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "lg": "24px",
+                        "gutter": "16px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "base": "8px",
+                        "container-margin": "16px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Public Sans"],
+                        "headline-md": ["Public Sans"],
+                        "label-md": ["Public Sans"],
+                        "body-md": ["Public Sans"],
+                        "headline-lg": ["Public Sans"],
+                        "headline-lg-mobile": ["Public Sans"],
+                        "headline-sm": ["Public Sans"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "300" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body class="bg-background font-body-md text-on-surface overflow-hidden">
+    <!-- TopAppBar (Desktop Only via Shell Layout) -->
+    <header
+        class="bg-surface dark:bg-on-background shadow-sm fixed top-0 left-0 right-0 z-40 h-16 hidden md:flex justify-between items-center px-lg w-full">
+        <div class="flex items-center gap-sm">
+            <span class="material-symbols-outlined text-primary dark:text-primary-fixed"
+                style="font-size: 28px;">volunteer_activism</span>
+            <h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">Community Hero
+            </h1>
+        </div>
+        <nav class="flex items-center gap-lg">
+            <a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high px-3 py-2 rounded-lg transition-colors"
+                href="#">Home</a>
+            <a class="font-label-md text-label-md text-primary dark:text-primary-fixed border-b-2 border-primary px-3 py-2"
+                href="#">Map</a>
+            <a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high px-3 py-2 rounded-lg transition-colors"
+                href="#">Report</a>
+            <a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high px-3 py-2 rounded-lg transition-colors"
+                href="#">Feed</a>
+            <a class="font-label-md text-label-md text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high px-3 py-2 rounded-lg transition-colors"
+                href="#">Profile</a>
+        </nav>
+        <button
+            class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-high p-2 rounded-full transition-colors">search</button>
+    </header>
+    <!-- Full-screen Map Background -->
+    <main class="relative w-full h-screen">
+        <div class="absolute inset-0 w-full h-full bg-surface-container-low"
+            data-alt="A detailed, high-resolution satellite-style map of a modern metropolitan city with clean, bright streets and green park areas. The aesthetic is professional and corporate, using a light mode palette of soft grays, greens, and whites. Subtle UI overlays and vector lines represent city infrastructure in a clean, legible way."
+            data-location="San Francisco" id="map-container"
+            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCEbZNV3_SPdHAKorvX4fGJ3GR_ogvdaKpqKZTbcBME9ShB0BTwRoluhl1RcSGgq7RnKo2z5v19pFztMgWsz-AUtYfizwGu0OArAQzAk1_SXi30jgw0wzzG4FMsQZ_xg5OtJfBVwWsnQH6IaBFZa_5F7tPpKVchiFvUI94N3qeMqEMv1ljr9kUDr7OFGEyRcjWlkaRUivd0-_7PjFRCqDQ_vfFjnaSfZQt7XQ9JKKp4AxJQGcS6tzMPfDvr2Lh6FbZXFf3Iuru0uAE')">
+        </div>
+        <!-- Floating Markers (Simulation) -->
+        <!-- Orange Markers (Pending) -->
+        <div class="absolute top-1/4 left-1/3 transform -translate-x-1/2 -translate-y-1/2">
+            <div class="flex flex-col items-center">
+                <div
+                    class="w-10 h-10 bg-tertiary text-on-tertiary-container rounded-full flex items-center justify-center shadow-lg border-2 border-white cursor-pointer hover:scale-110 transition-transform active:scale-95">
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">warning</span>
+                </div>
+                <div
+                    class="mt-1 bg-surface-container-highest px-2 py-1 rounded-md shadow-sm border border-outline-variant">
+                    <span class="text-[10px] font-bold text-on-surface-variant">Pending</span>
+                </div>
+            </div>
+        </div>
+        <div class="absolute top-1/2 right-1/4 transform -translate-x-1/2 -translate-y-1/2">
+            <div class="flex flex-col items-center">
+                <div
+                    class="w-12 h-12 bg-primary text-on-primary rounded-full flex items-center justify-center shadow-lg border-2 border-white marker-pulse cursor-pointer hover:scale-110 transition-transform active:scale-95">
+                    <span class="material-symbols-outlined"
+                        style="font-variation-settings: 'FILL' 1;">engineering</span>
+                </div>
+                <div class="mt-1 bg-primary-container px-2 py-1 rounded-md shadow-sm">
+                    <span class="text-[10px] font-bold text-on-primary-container">In Progress</span>
+                </div>
+            </div>
+        </div>
+        <!-- Floating Filter Buttons -->
+        <div class="absolute top-4 md:top-24 left-gutter flex flex-col gap-sm z-30">
+            <button
+                class="flex items-center gap-xs bg-surface-container-lowest border border-outline-variant px-4 py-2.5 rounded-full shadow-md text-on-surface hover:bg-surface-container-high transition-colors active:scale-95">
+                <span class="material-symbols-outlined text-[18px]">category</span>
+                <span class="font-label-md text-label-md font-semibold">Category</span>
+            </button>
+            <button
+                class="flex items-center gap-xs bg-surface-container-lowest border border-outline-variant px-4 py-2.5 rounded-full shadow-md text-on-surface hover:bg-surface-container-high transition-colors active:scale-95">
+                <span class="material-symbols-outlined text-[18px]">tune</span>
+                <span class="font-label-md text-label-md font-semibold">Status</span>
+            </button>
+        </div>
+        <!-- Search Overlay (Mobile) -->
+        <div class="absolute top-4 right-gutter md:hidden z-30">
+            <button
+                class="w-12 h-12 bg-surface shadow-lg rounded-full flex items-center justify-center text-primary active:scale-90 transition-transform">
+                <span class="material-symbols-outlined">search</span>
+            </button>
+        </div>
+        <!-- FAB: My Location -->
+        <button
+            class="fixed right-gutter bottom-40 md:bottom-24 z-30 w-14 h-14 bg-primary text-on-primary rounded-full shadow-xl flex items-center justify-center hover:bg-primary-container hover:text-on-primary-container transition-all active:scale-90">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">my_location</span>
+        </button>
+        <!-- Bottom Sheet Preview Card -->
+        <div class="fixed bottom-0 left-0 right-0 z-40 transform translate-y-[calc(100%-120px)] bottom-sheet-transition md:left-gutter md:bottom-24 md:right-auto md:w-96 md:translate-y-0"
+            id="bottom-sheet">
+            <div
+                class="bg-surface rounded-t-xl md:rounded-xl shadow-2xl overflow-hidden border-t md:border border-outline-variant">
+                <!-- Handle (Mobile) -->
+                <div class="flex justify-center py-3 md:hidden cursor-pointer" onclick="toggleBottomSheet()">
+                    <div class="w-12 h-1.5 bg-outline-variant rounded-full"></div>
+                </div>
+                <div class="p-gutter pt-0 md:pt-gutter">
+                    <div class="flex justify-between items-start mb-sm">
+                        <div>
+                            <span
+                                class="inline-block bg-tertiary-fixed text-on-tertiary-fixed text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full mb-1">Infrastructure</span>
+                            <h2 class="font-headline-sm text-headline-sm text-on-surface leading-tight">Pothole on Main
+                                St</h2>
+                        </div>
+                        <div
+                            class="bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-full text-[12px] font-bold flex items-center gap-1">
+                            <span class="material-symbols-outlined text-[14px]">schedule</span>
+                            Pending
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-sm mb-md">
+                        <div
+                            class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center overflow-hidden">
+                            <img class="w-full h-full object-cover"
+                                data-alt="A professional headshot of a friendly-looking community member, light-skinned with a warm smile, against a soft blurred urban background. Modern corporate photography style, bright and clean."
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCw1oIN6FSsoId01rIJEdTcfZQcMVyBB5sAOiuCBhiDjY_ogPXcsuZtAztdnkf6lE0DuKCaSKHkOZ2RK8Cvcqphxiibc_KZx810l9cHxPd-dzezSjbnJlluLMbd5riv6tQ4iauPPo9uY8IiQ0gLf4arGoZO3DwjdzfgxThxiAox6K6xgqfitj8Nqt2C6uP97gAP3hmD85RDc2WkxJk09zgO02KxbQn99qXFkSmJTRZxN0VjCyhAFiaE7e3JVSHyQNBRWVNTkL5ktN0" />
+                        </div>
+                        <div>
+                            <p class="text-on-surface font-semibold text-body-md">Reported by Sarah J.</p>
+                            <p class="text-on-surface-variant text-label-md">2 hours ago • Downtown District</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-sm mb-md">
+                        <div class="h-24 rounded-lg bg-surface-container-high overflow-hidden">
+                            <img class="w-full h-full object-cover"
+                                data-alt="A close-up photograph of a significant pothole in the middle of an asphalt road. The lighting is bright and clear, showing the texture of the damaged pavement. The visual style is documentary and realistic."
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdcmAilR2SUNdywIKe4lWsOllssmlagYMzJIM82eupByBxGostKmHPMn248K1PWntJ3XKXLozDeUFAE2ErOfDg-YqhXK9p-W-OtojK860KAB68om8UDy0_HFB2mxPhYzyZICmAq4MbUXwW0pTHBgsBHwQZjc74ABht9_4nqo7hCXPpg8shfzopk_RkmbX6DrqWxrngSiJLpbebyZsO1xQ5OCKkIN055fATK3L2wSWawIcYdBA0m0td6V70whR7zmOXcey7BVt_5J4" />
+                        </div>
+                        <div class="h-24 rounded-lg bg-surface-container-high overflow-hidden relative">
+                            <div class="absolute inset-0 bg-black/20 flex items-center justify-center">
+                                <span class="text-white font-bold text-label-md">+3 Photos</span>
+                            </div>
+                            <img class="w-full h-full object-cover"
+                                data-alt="A wide shot of a busy urban street with traffic cones and modern architecture in the background. The scene is illuminated by bright daylight, emphasizing a clean and orderly city environment despite the maintenance needs."
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJLL9uPwU7X2LQbF1Pca-50eFZ9Joj-cPDbZ7-HmT3eIUu7APcJZqAbiSwK9rYhHQuFw2u6jd4-PwJyZ1Umskkob7KVKyq9QlO4-R13v5n9b2V7GD1uP1VsyJY4zAddg4tINgOXmzD41JP_5g80L3p0yhIHnlEjDjUzQKNsVQrcRQao2dbxkLpq-Y7YiGu_6oOo1eEKxDeEIx1--Tx3Ha_DTxbxKnbNK1VJGzPJTI5-mAju0snELZ1bapRURSxeoreWO70UoLif_Y" />
+                        </div>
+                    </div>
+                    <div class="flex gap-sm">
+                        <button
+                            class="flex-1 bg-primary text-on-primary font-bold py-3 rounded-lg hover:opacity-90 active:scale-95 transition-all">View
+                            Details</button>
+                        <button
+                            class="w-12 h-12 border border-outline-variant flex items-center justify-center rounded-lg text-primary hover:bg-surface-container transition-colors">
+                            <span class="material-symbols-outlined">share</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- Bottom padding for nav on mobile -->
+                <div class="h-20 md:hidden"></div>
+            </div>
+        </div>
+    </main>
+    <!-- BottomNavBar (Mobile Only via Shell Layout) -->
+    <nav
+        class="fixed bottom-0 w-full z-50 bg-surface-container dark:bg-inverse-surface border-t border-outline-variant dark:border-outline rounded-t-xl flex justify-around items-center px-gutter py-sm pb-safe md:hidden">
+        <a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant py-1 hover:bg-surface-container-highest transition-all active:scale-90 duration-150"
+            href="#">
+            <span class="material-symbols-outlined">home</span>
+            <span class="font-label-md text-label-md">Home</span>
+        </a>
+        <a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-full px-4 py-1 active:scale-90 duration-150"
+            href="#">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">map</span>
+            <span class="font-label-md text-label-md">Map</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant py-1 hover:bg-surface-container-highest transition-all active:scale-90 duration-150"
+            href="#">
+            <span class="material-symbols-outlined">add_circle</span>
+            <span class="font-label-md text-label-md">Report</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant py-1 hover:bg-surface-container-highest transition-all active:scale-90 duration-150"
+            href="#">
+            <span class="material-symbols-outlined">forum</span>
+            <span class="font-label-md text-label-md">Feed</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant py-1 hover:bg-surface-container-highest transition-all active:scale-90 duration-150"
+            href="#">
+            <span class="material-symbols-outlined">person</span>
+            <span class="font-label-md text-label-md">Profile</span>
+        </a>
+    </nav>
+    <script>
+        let isSheetOpen = false;
+        function toggleBottomSheet() {
+            const sheet = document.getElementById('bottom-sheet');
+            if (isSheetOpen) {
+                sheet.style.transform = 'translateY(calc(100% - 120px))';
+            } else {
+                sheet.style.transform = 'translateY(0)';
+            }
+            isSheetOpen = !isSheetOpen;
+        }
+
+        // Handle desktop resize visibility
+        window.addEventListener('resize', () => {
+            const sheet = document.getElementById('bottom-sheet');
+            if (window.innerWidth >= 768) {
+                sheet.style.transform = 'translateY(0)';
+            } else {
+                if (!isSheetOpen) {
+                    sheet.style.transform = 'translateY(calc(100% - 120px))';
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
